@@ -3,6 +3,7 @@ use actix_web::{App, HttpRequest, HttpServer, Responder, web};
 use actix_web::dev::Server;
 use actix_web::middleware::Logger;
 use sqlx::{PgPool};
+use tracing_actix_web::TracingLogger;
 use crate::routes::{health_check, subscribe};
 
 pub fn run(
@@ -12,7 +13,7 @@ pub fn run(
     let connection = web::Data::new(connection);
     let server = HttpServer::new(move || {
         App::new()
-            .wrap(Logger::default())
+            .wrap(TracingLogger::default())
             .route("/", web::get().to(greet))
             .route("/subscriptions", web::post().to(subscribe))
             .route("/health_check", web::get().to(health_check))
