@@ -45,5 +45,5 @@ done
 >&2 echo "Postgres is up and running on port ${DB_PORT}!"
 export DATABASE_URL=pos
 
-export DATABASE_URL=postgres://user:password@127.0.0.1:5432/newsletter
-sqlx migrate add create_subscriptions_tabl
+# export DATABASE_URL=postgres://user:password@127.0.0.1:5432/newsletter
+# sqlx migrate add create_subscriptions_tabl
